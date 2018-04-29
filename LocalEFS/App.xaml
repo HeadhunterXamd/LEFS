@@ -1,0 +1,14 @@
+﻿<Application x:Class="LocalEFS.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:LocalEFS"
+             xmlns:utils="clr-namespace:LocalEFS.Utils"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Style.Setters>
+                <Setter Property="utils:InputBindingsManager.UpdatePropertySourceWhenEnterPressed" Value="TextBox.Text"/>
+            </Style.Setters>
+        </Style>
+    </Application.Resources>
+</Application>
