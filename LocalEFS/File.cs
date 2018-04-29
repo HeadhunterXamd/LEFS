@@ -30,8 +30,8 @@ namespace LocalEFS
         private string path;
         private string name;
         private string extension;
-        private Icon icon;
-        public ImageSource ImageSource { get => icon.ToImageSource(); }
+        //private Icon icon;
+        //public ImageSource ImageSource { get => icon.ToImageSource(); }
         public string Name
         {
             get => name;
@@ -60,9 +60,9 @@ namespace LocalEFS
             source = file;
             Path = file.FullName.Substring(0, file.FullName.LastIndexOf(System.IO.Path.DirectorySeparatorChar)+1);
             Name = file.Name;
-            Console.WriteLine(path.Substring(0, path.LastIndexOf(System.IO.Path.DirectorySeparatorChar)));
+            //Console.WriteLine(path.Substring(0, path.LastIndexOf(System.IO.Path.DirectorySeparatorChar)));
             Extension = file.Extension;
-            icon = Icon.ExtractAssociatedIcon(file.FullName);
+            //icon = Icon.ExtractAssociatedIcon(file.FullName);
             Tags = Path.Split(System.IO.Path.PathSeparator).Select(x => new Tag(x)).ToArray();
             PropertyChanged += (sender, args) =>
             {

@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:LocalEFS"
         xmlns:b="clr-namespace:LocalEFS.Utils"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" >
-    <Grid>
+        Title="MainWindow" Height="600" Width="800" >
+    <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -20,18 +20,21 @@
             <TextBox Name="pathbox" Text="{Binding Path, Mode=TwoWay}" ></TextBox>
             <Button ></Button>
         </StackPanel>
-        <ListView Grid.Column="0" Grid.Row="1" Name="items" ItemsSource="{Binding Files}" Cursor="Hand">
-            <ListView.ItemTemplate >
-                <DataTemplate>
-                    <ListViewItem >
-                        <StackPanel Orientation="Horizontal" Cursor="Hand" Focusable="False" HorizontalAlignment="Stretch" Width="auto">
-                            <Image Source="{Binding ImageSource}" Width="30" Height="30" />
-                            <TextBox Text="{Binding Name}" MinWidth="10px" IsReadOnly="False" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBox>
-                            <Button Content="Show details" Click="Button_Click"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <DockPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Stretch" >
+            <ListView  Name="items" ItemsSource="{Binding Files}" Cursor="Hand" DockPanel.Dock="Top" Height="{Binding ActualHeight, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RowDefinition}}}">
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ListViewItem >
+                            <StackPanel Orientation="Horizontal" Cursor="Hand" Focusable="False" HorizontalAlignment="Stretch" Width="auto">
+                                <!--<Image Source="{Binding ImageSource}" Width="30" Height="30" />-->
+                                <TextBox Text="{Binding Name}" MinWidth="10px" IsReadOnly="False" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" ></TextBox>
+                                <Button Content="Show details" Click="Button_Click"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <TextBox Text="{Binding Status}" DockPanel.Dock="Bottom"></TextBox>
+        </DockPanel>
     </Grid>
 </Window>
